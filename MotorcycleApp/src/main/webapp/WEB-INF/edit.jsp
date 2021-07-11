@@ -6,6 +6,7 @@
 <meta charset="UTF-8">
 <title>Welcome to mkdir Moto</title>
 <script>
+	const name = "${motorcycle.name}";
 	function ChooseById ()
 	{
 		const id = prompt ("Enter ID:");
@@ -15,12 +16,11 @@
 </head>
 <body>
 
-<center><h1>Welcome to mkdir Moto!</h1></center>
-<h3>What would you like to do?</h3>
-<ol>
-	<li><a href='javascript:ChooseById()'>Choose Motorcycles by Id</a></li>
-	<li><a href='/list'>List All Motorcycles</a></li>
-</ol>
+<h1>Motorcycles Rock!</h1>
+<form>
+	<p><input type='text' name='name' id='name' value ="${motorcycle.name}"/></p>
+	<p><input type='text' name='name' id='name' value ="${motorcycle.make}"/></p>
+</form>
 
 
 </body>

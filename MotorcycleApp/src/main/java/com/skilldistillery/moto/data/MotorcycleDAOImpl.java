@@ -9,10 +9,12 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 import javax.transaction.Transactional;
 
+import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Service;
 
 import com.skilldistillery.moto.entities.Motorcycle;
 
+@Primary
 @Service
 @Transactional
 public class MotorcycleDAOImpl implements MotoDAO {
@@ -20,19 +22,9 @@ public class MotorcycleDAOImpl implements MotoDAO {
 	@PersistenceContext
 	private EntityManager em; 
 	
-//	@Override
-//	public Motorcycle findById(int id) {
-//			
-//	}
-
-	@Override
-	public <S extends Motorcycle> S save(S entity) {
-		return null;
-	}
-
-	@Override
-	public <S extends Motorcycle> Iterable<S> saveAll(Iterable<S> entities) {
-		return null;
+	
+	public MotorcycleDAOImpl() {
+		
 	}
 
 	@Override
@@ -50,8 +42,9 @@ public class MotorcycleDAOImpl implements MotoDAO {
 
 	@Override
 	public Iterable <Motorcycle> findAll() {
-		Query moto = em.createQuery("SELECT * FROM motorcycle"); 
+		Query moto = em.createQuery("SELECT m FROM Motorcycle m"); 
 		return moto.getResultList();
+	//	return em
 	}
 
 	@Override
@@ -103,7 +96,14 @@ public class MotorcycleDAOImpl implements MotoDAO {
 		}		
 	}
 	
-	public MotorcycleDAOImpl() {
-		
+	@Override
+	public <S extends Motorcycle> S save(S entity) {
+		return null;
 	}
+
+	@Override
+	public <S extends Motorcycle> Iterable<S> saveAll(Iterable<S> entities) {
+		return null;
+	}
+	
 }

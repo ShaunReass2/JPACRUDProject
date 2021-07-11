@@ -174,8 +174,8 @@ public class Motorcycle {
 	}
 
 
-	public void setPannierCapable(boolean pannierCapable) {
-		this.pannierCapable = pannierCapable;
+	public void setPannierCapable(int pannierCapable) {
+		this.pannierCapable = pannierCapable==1;
 	}
 
 
