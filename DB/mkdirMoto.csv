@@ -1,0 +1,16 @@
+id,name,make,model,year,market,fuel_type,fuel_tank_capacity_in_gallons,miles_per_gallon,range_in_miles,weight_in_pounds_wet,pannier_capable,price_new_in_us_dollars,description
+1,Elsa,BMW,R1200GSA,2012,Adventure,"AKI 91",8.7,40,348,565,Yes,23500.00,"Adventure style motorcycle, capable of anything ranging from a quick Starbucks run to a multi-year jaunt around the world. "
+2,Hilde,BMW,R1250GSA,2019,Adventure,"AKI 91",7.93,42,333,590,Yes,"25,400.00","Adventure style motorcycle, capable of anything ranging from a quick Starbucks run to a multi-year jaunt around the world. "
+3,Heidi,BMW,f800ST,2008,Adventure,"AKI 91",4.2,60,252,256,Yes,"12,500.00","A zippy sport touring motorcycle, perfectly at home running errands around town or a quick month-long ride from the Lower 48 to Alaska. "
+4,Hannah,KTM,"1290 Super Adventure R",2021,Adventure,"AKI 91",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+5,Anna,KTM,"690 Adventure R",2021,Adventure,"AKI 91",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+6,Alessandra,Ducati,"Multistrada 950 S",2021,Adventure,"AKI 91",NULL,NULL,NULL,450,NULL,NULL,NULL
+7,Harumi,Kawasaki,KLR650,2013,Adventure,"AKI 87",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+8,Haruka,Honda,"Africa Twin",2020,Adventure,"AKI 87",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+9,Bella,"Aprilia ",RSV4,2021,Racing,"AKI 93",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+10,Saika,Yamaha,"Super Tenere 700",2021,"Adventure ","AKI 87",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+11,Amelia,BMW,M1000RR,2021,Racing,"AKI 93",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+12,Ada,BMW,S1000RR,2021,Racing,"AKI 93",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+13,Poppy,Triump,"Tiger 1200 Range",2021,Adventure,"AKI 91",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+14,Grace,Harley-Davidson,"Pan America 1250 Special",2021,Touring,"AKI 91",NULL,NULL,NULL,NULL,NULL,NULL,NULL
+15,Ichicka,"Suzuki ","Hayabusa Matthew Lee Spacial Edition",2020,Racing,"AKI 93",NULL,NULL,NULL,NULL,NULL,NULL,NULL

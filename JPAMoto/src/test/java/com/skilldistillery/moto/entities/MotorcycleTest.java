@@ -44,7 +44,19 @@ class MotorcycleTest {
 	@Test
 	void test_Motorcycle_entitiy_mapping() {
 		assertNotNull(motorcycle); 
-		assertEquals("1200", motorcycle.getMake()); 
+		assertEquals("Elsa", motorcycle.getName()); 
+		assertEquals("BMW", motorcycle.getMake()); 
+		assertEquals("R1200GSA", motorcycle.getModel()); 
+		assertEquals(2012, motorcycle.getYear()); 
+		assertEquals("Adventure", motorcycle.getMarket()); 
+		assertEquals("AKI 91", motorcycle.getFuelType()); 
+		assertEquals(8.7, motorcycle.getFuelTankCapacityInGallons()); 
+		assertEquals(40.0, motorcycle.getMilesPerGallon()); 
+		assertEquals(348, motorcycle.getRangeInMiles()); 
+		assertEquals(565, motorcycle.getWeightInPoundsWet()); 
+		assertEquals(true, motorcycle.getPannierCapable()); 
+		assertEquals(23500.00, motorcycle.getPriceNewInUsDollars()); 
+		assertEquals("Hey", motorcycle.getDescription()); 
 	}
 
 }
