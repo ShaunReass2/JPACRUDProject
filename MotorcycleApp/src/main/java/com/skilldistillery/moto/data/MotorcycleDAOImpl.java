@@ -98,6 +98,22 @@ public class MotorcycleDAOImpl implements MotoDAO {
 	
 	@Override
 	public <S extends Motorcycle> S save(S entity) {
+		try {
+			//em.getTransaction().begin();
+			if (entity.getId()==0)
+			{
+				em.persist(entity);
+			}else {
+				em.merge(entity);
+			}
+		
+			//em.getTransaction().commit();
+		}catch (Exception e)
+		{
+			System.err.println (e.getMessage());
+			e.printStackTrace();
+		}
+		
 		return null;
 	}
 

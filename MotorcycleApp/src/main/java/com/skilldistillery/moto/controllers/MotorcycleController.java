@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.skilldistillery.moto.data.MotoDAO;
 import com.skilldistillery.moto.entities.Motorcycle;
@@ -25,20 +26,78 @@ public class MotorcycleController {
 		model.addAttribute("motorcycle", dao.findById(2)); 
 		return "index"; 
 	}
-	@RequestMapping(path= {"/view", "home.do"})
+	
+	@RequestMapping(path= {"/updateMotorcycle", "home.do"})
 	public String view(Model model) {
 		String sid = request.getParameter("id");
 		int id =Integer.parseInt(sid);
 		 Optional <Motorcycle> moto =dao.findById(id);
 		
 		model.addAttribute("motorcycle", moto.get()); 
-		return "edit"; 
+		return "updateMotorcycle"; 
 	}
-	@RequestMapping(path= {"/list", "home.do"})
+	
+	@RequestMapping(path= {"/deleteMotorcycle", "home.do"})
+	public String deleteMotorcycle(Model model) {
+		String sid = request.getParameter("id");
+		int id =Integer.parseInt(sid);
+		dao.deleteById(id);
+		
+		//model.addAttribute("motorcycle", moto.get()); 
+		return "index"; 
+	}
+	@RequestMapping(path= {"/listAllMotorcycles", "home.do"})
 	public String listAll(Model model) {
 		model.addAttribute("motorcycle", dao.findAll()); 
-		return "list"; 
+		return "listAllMotorcycles"; 
 	}
+	@RequestMapping(path= {"/updateMotorcycle", "home.do"}, method = RequestMethod.POST )
+	public String updateMotorcycle(Model model) {
+		Motorcycle m = populate();
+		
+		dao.save(m);
+		return "index";
+		
+	}
+	@RequestMapping(path= {"/createMotorcycle", "home.do"})
+	public String createMotorcycle(Model model) {
+		
+		Motorcycle m = new Motorcycle();
+		m.setId(0);
+		model.addAttribute("motorcycle", m); 
+		return "updateMotorcycle"; 
+	}
+	private Motorcycle populate ()
+	{
+		try {
+			Motorcycle m = new Motorcycle();
+			m.setDescription(request.getParameter("description"));
+			m.setFuelTankCapacityInGallons(Double.parseDouble(request.getParameter("fuelTankCapacityInGallons")));
+			
+			// request.getParameter("description")
+			m.setFuelType(request.getParameter("fuelType"));
+			m.setId(Integer.parseInt(request.getParameter("id")));
+			
+			m.setMake(request.getParameter("make"));
+			m.setModel(request.getParameter("model"));
+			m.setMarket(request.getParameter("market"));
+			m.setMilesPerGallon (Double.parseDouble(request.getParameter("milesPerGallon")));
+			m.setName(request.getParameter("name"));
+			String p = request.getParameter("pannierCapable");
+			m.setPannierCapable(Integer.parseInt(p));
+			m.setPriceNewInUsDollars(Double.parseDouble(request.getParameter("priceNewInUsDollars")));
+			m.setRangeInMiles(Integer.parseInt(request.getParameter("rangeInMiles")));
+			m.setWeightInPoundsWet(Integer.parseInt("weightInPoundsWet"));
+			m.setYear(Integer.parseInt(request.getParameter("year")));
+			
+			return m;
+			}catch (Exception e) {
+				e.printStackTrace();
+			return null;
+		}
+		
+	}
+	
 //	@RequestMapping(path= {"/", ""})
 //	public Optional findById(Integer id) {
 //	
