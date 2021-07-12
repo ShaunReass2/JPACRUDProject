@@ -21,83 +21,96 @@ public class MotorcycleController {
 	@Autowired
 	private HttpServletRequest request;
 
-	@RequestMapping(path= {"/", "home.do"})
+	@RequestMapping(path = { "/", "home.do" })
 	public String index(Model model) {
-		model.addAttribute("motorcycle", dao.findById(2)); 
-		return "index"; 
+		model.addAttribute("motorcycle", dao.findById(2));
+		return "index";
 	}
-	
-	@RequestMapping(path= {"/updateMotorcycle", "home.do"})
+
+	@RequestMapping(path = { "/updateMotorcycle", "home.do" })
 	public String view(Model model) {
 		String sid = request.getParameter("id");
-		int id =Integer.parseInt(sid);
-		 Optional <Motorcycle> moto =dao.findById(id);
-		
-		model.addAttribute("motorcycle", moto.get()); 
-		return "updateMotorcycle"; 
+		int id = Integer.parseInt(sid);
+		Motorcycle m = dao.findById(id).get();
+		model.addAttribute("motorcycle", m);
+		return "updateMotorcycle";
 	}
-	
-	@RequestMapping(path= {"/deleteMotorcycle", "home.do"})
+
+	@RequestMapping(path = { "/deleteMotorcycle", "home.do" })
 	public String deleteMotorcycle(Model model) {
 		String sid = request.getParameter("id");
-		int id =Integer.parseInt(sid);
+		int id = Integer.parseInt(sid);
 		dao.deleteById(id);
-		
-		//model.addAttribute("motorcycle", moto.get()); 
-		return "index"; 
+
+		// model.addAttribute("motorcycle", moto.get());
+		return "index";
 	}
-	@RequestMapping(path= {"/listAllMotorcycles", "home.do"})
+
+	@RequestMapping(path = { "/listAllMotorcycles", "home.do" })
 	public String listAll(Model model) {
-		model.addAttribute("motorcycle", dao.findAll()); 
-		return "listAllMotorcycles"; 
+		Iterable<Motorcycle>list = dao.findAll();
+		model.addAttribute("motorcycle", list);
+		return "listAllMotorcycles";
 	}
+
+	@RequestMapping(path = { "/createMotorcycle", "home.do" })
+	public String createMotorcycle(Model model) {
+
+		Motorcycle m = new Motorcycle();
+		m.setId(0);
+		model.addAttribute("motorcycle", m);
+		return "updateMotorcycle";
+	}
+
 	@RequestMapping(path= {"/updateMotorcycle", "home.do"}, method = RequestMethod.POST )
 	public String updateMotorcycle(Model model) {
 		Motorcycle m = populate();
 		
 		dao.save(m);
-		return "index";
-		
+		return "index";		
 	}
-	@RequestMapping(path= {"/createMotorcycle", "home.do"})
-	public String createMotorcycle(Model model) {
-		
-		Motorcycle m = new Motorcycle();
-		m.setId(0);
-		model.addAttribute("motorcycle", m); 
-		return "updateMotorcycle"; 
-	}
-	private Motorcycle populate ()
-	{
+
+	private Motorcycle populate() {
 		try {
 			Motorcycle m = new Motorcycle();
 			m.setDescription(request.getParameter("description"));
 			m.setFuelTankCapacityInGallons(Double.parseDouble(request.getParameter("fuelTankCapacityInGallons")));
-			
+
 			// request.getParameter("description")
 			m.setFuelType(request.getParameter("fuelType"));
 			m.setId(Integer.parseInt(request.getParameter("id")));
-			
+
 			m.setMake(request.getParameter("make"));
 			m.setModel(request.getParameter("model"));
 			m.setMarket(request.getParameter("market"));
-			m.setMilesPerGallon (Double.parseDouble(request.getParameter("milesPerGallon")));
+			m.setMilesPerGallon(Double.parseDouble(request.getParameter("milesPerGallon")));
 			m.setName(request.getParameter("name"));
 			String p = request.getParameter("pannierCapable");
-			m.setPannierCapable(Integer.parseInt(p));
-			m.setPriceNewInUsDollars(Double.parseDouble(request.getParameter("priceNewInUsDollars")));
-			m.setRangeInMiles(Integer.parseInt(request.getParameter("rangeInMiles")));
-			m.setWeightInPoundsWet(Integer.parseInt("weightInPoundsWet"));
-			m.setYear(Integer.parseInt(request.getParameter("year")));
 			
+			m.setPannierCapable(p.equals("true")?1:0);
+			m.setPriceNewInUsDollars(Double.parseDouble(request.getParameter("priceNewInUsDollars")));
+			int r =parseInt(request.getParameter("rangeInMiles"),0);
+			m.setRangeInMiles(r);
+			int w =parseInt(request.getParameter("weightInPoundsWet"),0);
+			m.setWeightInPoundsWet(w);
+			m.setYear(Integer.parseInt(request.getParameter("year")));
+
 			return m;
-			}catch (Exception e) {
-				e.printStackTrace();
+		} catch (Exception e) {
+			System.out.println(e);
+			e.printStackTrace();
 			return null;
 		}
-		
+
 	}
-	
+	private int parseInt (String val, int alt)
+	{
+		try {
+			return Integer.parseInt(val);
+		}catch (Exception e) {
+			return alt;
+		}
+	}
 //	@RequestMapping(path= {"/", ""})
 //	public Optional findById(Integer id) {
 //	
@@ -147,7 +160,7 @@ public class MotorcycleController {
 //	public void deleteAll() {
 //	
 //	}
-	
+
 //	@RequestMapping(path= {"/", ""})
 //	public <S extends Motorcycle> S save(S entity) {
 //	
@@ -157,6 +170,5 @@ public class MotorcycleController {
 //	public <S extends Motorcycle> Iterable<S> saveAll(Iterable<S> entities) {
 //	
 //	}
-	
-}
 
+}

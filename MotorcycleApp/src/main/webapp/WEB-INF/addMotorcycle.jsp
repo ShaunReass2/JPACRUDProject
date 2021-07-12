@@ -27,6 +27,12 @@
 <br>
 <br>
 
+<br>
+<br>
+	<form action="/"><input type="submit" value="Return to the Home Page"></form>
+<br>
+<br>
+
 </body>
 
 </html>

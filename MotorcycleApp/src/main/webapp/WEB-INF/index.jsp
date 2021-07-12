@@ -40,7 +40,7 @@
 	
 	<br>
 	
-	<center><li><a href='/updateMotorcycle'><font style = "machine" size = 5>UPDATE MOTORCYCLE SPECS</a></li></center>
+	<center><li><a href='/listAllMotorcycles'><font style = "machine" size = 5>UPDATE MOTORCYCLE SPECS</a></li></center>
 	
 	<br>
 	
@@ -48,7 +48,7 @@
 	
 	<br>
 	
-	<center><li><a href='/deleteMotorcycle'><font style = "machine" size = 5>DELETE MOTORCYCLES FROM THE GARAGE</a></li></center>
+	<center><li><a href='/listAllMotorcycles'><font style = "machine" size = 5>DELETE MOTORCYCLES FROM THE GARAGE</a></li></center>
 	
 </ul>
 

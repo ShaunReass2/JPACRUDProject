@@ -154,8 +154,12 @@ public class Motorcycle {
 	}
 
 
-	public void setRangeInMiles(int rangeInMiles) {
-		this.rangeInMiles = rangeInMiles;
+	public void setRangeInMiles(int range) {
+		try {
+			this.rangeInMiles = range;
+		}catch (Exception e) {
+			this.rangeInMiles=0;
+		}
 	}
 
 

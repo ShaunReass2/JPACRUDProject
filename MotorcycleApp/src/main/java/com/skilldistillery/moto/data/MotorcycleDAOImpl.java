@@ -42,8 +42,13 @@ public class MotorcycleDAOImpl implements MotoDAO {
 
 	@Override
 	public Iterable <Motorcycle> findAll() {
+		try {
 		Query moto = em.createQuery("SELECT m FROM Motorcycle m"); 
 		return moto.getResultList();
+		}catch (Exception e) {
+			System.out.println (e);
+		}
+		return null;
 	//	return em
 	}
 

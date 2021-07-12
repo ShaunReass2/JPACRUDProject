@@ -24,5 +24,12 @@
 		<p><a href='/updateMotorcycle?id=${item.id}'>${item.name }</a>  <a href='/deleteMotorcycle?id=${item.id}'>DELETE</a></p>
 
 </c:forEach>
+
+<br>
+<br>
+	<form action="/"><input type="submit" value="Return to the Home Page"></form>
+<br>
+<br>
+
 </body>
 </html>
