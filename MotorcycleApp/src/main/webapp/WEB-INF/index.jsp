@@ -14,12 +14,10 @@
 
 <br>
 <br>
-<br>
 
 <center><h1><font style = "microgram" size = 7>WELCOME TO MKDIR MOTO</font></h1></center>
 <center><h3><font style = "microgram" size = 5>EXPAND YOUR WORLD &nbsp; || &nbsp; RIDE TWO WHEELS</font></h3></center>
 
-<br>
 <br>
 <br>
 <br>
